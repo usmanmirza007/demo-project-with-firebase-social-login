@@ -8,8 +8,9 @@ import {Alert} from 'react-native';
 import database from '@react-native-firebase/database';
 
 export const Signup = (userName, email, password) => {
+  console.log('userName',userName,'Email',email)
   return auth()
-    .createUserWithEmailAndPassword(userName, email, password)
+    .createUserWithEmailAndPassword(email, password)
     .then(userCredential => {
 
       const user = userCredential.user;
@@ -19,7 +20,7 @@ export const Signup = (userName, email, password) => {
         .ref('signup/info/' + userid)
         .set({
           UserName: userName,
-          Emial: email,
+          Email: email,
           Password: password,
         })
         .then(() => console.log('Signup Data set.'));

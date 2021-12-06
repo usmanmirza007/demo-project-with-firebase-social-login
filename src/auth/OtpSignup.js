@@ -12,7 +12,6 @@ const OtpSignUp = props => {
 
   const [confirm, setConfirm] = useState(null); //if null means no otp message send
 
-
   const _sendOtp = () => {
     sendOtp(number).then(confirmation => setConfirm(confirmation));
   };
@@ -32,10 +31,10 @@ const OtpSignUp = props => {
 
       <Button
         title="send Otp"
-        onPress={() => {_sendOtp(number);
+        onPress={() => {
+          _sendOtp(number);
         }}
       />
-
 
       <TextInput
         placeholder="Enter OTP"
@@ -45,10 +44,7 @@ const OtpSignUp = props => {
         maxLength={6}
         style={{borderWidth: 1, width: '70%', color: 'black'}}
       />
-      <Button
-        title="Confirm Otp"
-        onPress={() => confirmCode(confirm, code)}
-      />
+      <Button title="Confirm Otp" onPress={() => confirmCode(confirm, code)} />
     </View>
   );
 };

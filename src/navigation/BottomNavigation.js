@@ -5,6 +5,7 @@ import Icons from 'react-native-vector-icons/Ionicons'
 import DrawerScreen from './DrawerNavigation';
 import Movies from '../screens/Movies';
 import RealTime from '../screens/RealTime';
+import Profile from '../screens/Profile';
 
 const Tab = createBottomTabNavigator();
 
@@ -57,7 +58,7 @@ const BottomNav = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={RealTime}
+        component={Profile}
         options={{
           headerShown: false,
           tabBarIcon: ({color}) => (

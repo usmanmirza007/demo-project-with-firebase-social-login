@@ -9,15 +9,13 @@ import {
 } from 'react-native';
 import InputText from '../components/InputText';
 const {height, width} = Dimensions.get('window');
-import { Signup } from './AuthProvider';
+import {Signup} from './AuthProvider';
 
-const SignUp = (props) => {
-
-    const [userName, setUserName] = useState('');
-    const [email, setEmail] = useState('');
-    const [password, setPassword] = useState();
-    const [changePass, setChangePass] = useState();
-
+const SignUp = props => {
+  const [userName, setUserName] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState();
+  const [changePass, setChangePass] = useState();
 
   return (
     <View style={styles.container}>
@@ -25,26 +23,19 @@ const SignUp = (props) => {
         <View style={styles.v1}>
           <Text style={styles.txt}>Signup</Text>
         </View>
-        
 
         <View style={styles.v2}>
-        <InputText
+          <InputText
             placeholder="UserName"
             ico="mail"
             value={userName}
-            changeText={(val) => 
-              setUserName(val)
-            }
-
+            changeText={val => setUserName(val)}
           />
           <InputText
             placeholder="Email"
             ico="mail"
             value={email}
-            changeText={(val) => 
-              setEmail(val)
-            }
-
+            changeText={val => setEmail(val)}
           />
           <InputText
             placeholder="Password"
@@ -68,18 +59,28 @@ const SignUp = (props) => {
 
         <TouchableOpacity
           onPress={() => {
-            Signup(userName,email, password);
+            Signup(userName, email, password);
           }}
           style={{alignItems: 'center', marginTop: '-8%', elevation: 8}}>
           <View style={styles.v3}>
             <Text style={{fontSize: 20}}>Signup</Text>
+            {/* {console.log('userName',userName,'Email',email)} */}
           </View>
         </TouchableOpacity>
-        <View style={{flexDirection:'row',justifyContent:'center',marginTop:'10%'}}>
-          <Text style={{color:'black',fontSize:15}}>Already have an Account?</Text>
-          <TouchableOpacity onPress={() => {props.navigation.navigate("Login")
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginTop: '10%',
           }}>
-            <Text style={{fontSize:15}}>Login</Text>
+          <Text style={{color: 'black', fontSize: 15}}>
+            Already have an Account?
+          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('Login');
+            }}>
+            <Text style={{fontSize: 15}}>Login</Text>
           </TouchableOpacity>
         </View>
       </View>

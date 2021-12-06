@@ -53,50 +53,67 @@ const LogIn = props => {
           }}
           style={{alignItems: 'center', marginTop: '-8%', elevation: 8}}>
           <View style={styles.v3}>
-            <Text style={{fontSize: 20,color:"white"}}>Login</Text>
+            <Text style={{fontSize: 20, color: 'white'}}>Login</Text>
           </View>
         </TouchableOpacity>
-        <View style={{flexDirection:'row',justifyContent:'center',marginTop:'10%'}}>
-
-        <TouchableOpacity
-          onPress={() => {
-            GoogleSignIn().then(() => console.log('Signed in with Google!')).catch(error=>{
-              console.error(error)
-            });
-          }}
-          style={{alignItems: 'center', elevation: 8}}>
-          <View style={styles.v5}>
-            <Text style={{fontSize: 20,color:"white"}}>Google</Text>
-          </View>
-        </TouchableOpacity>
-
-        <TouchableOpacity
-          onPress={() => {props.navigation.navigate("Signup")
-          }}
-          style={{alignItems: 'center', elevation: 8}}>
-          <View style={styles.v5}>
-            <Text style={{fontSize: 20,color:"white"}}>Facebook</Text>
-          </View>
-        </TouchableOpacity>
-        </View>
-
-        <TouchableOpacity
-          onPress={() => {props.navigation.navigate("Otpsignup")
-          }}
-          style={{alignItems: 'center', elevation: 8}}>
-          <View style={styles.v4}>
-            <Text style={{fontSize: 20,color:"white"}}>SignUp with phone</Text>
-          </View>
-        </TouchableOpacity>
-        <View style={{flexDirection:'row',justifyContent:'center',marginTop:'10%'}}>
-          <Text style={{color:'black',fontSize:15}}>Don't have an Account?</Text>
-          <TouchableOpacity onPress={() => {props.navigation.navigate("Signup")
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginTop: '10%',
           }}>
-            <Text style={{fontSize:15}}>Signup</Text>
+          <TouchableOpacity
+            onPress={() => {
+              GoogleSignIn()
+                .then(() => console.log('Signed in with Google!'))
+                .catch(error => {
+                  console.error(error);
+                });
+            }}
+            style={{alignItems: 'center', elevation: 8}}>
+            <View style={styles.v5}>
+              <Text style={{fontSize: 20, color: 'white'}}>Google</Text>
+            </View>
+          </TouchableOpacity>
+
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('Signup');
+            }}
+            style={{alignItems: 'center', elevation: 8}}>
+            <View style={styles.v5}>
+              <Text style={{fontSize: 20, color: 'white'}}>Facebook</Text>
+            </View>
           </TouchableOpacity>
         </View>
 
-
+        <TouchableOpacity
+          onPress={() => {
+            props.navigation.navigate('Otpsignup');
+          }}
+          style={{alignItems: 'center', elevation: 8}}>
+          <View style={styles.v4}>
+            <Text style={{fontSize: 20, color: 'white'}}>
+              SignUp with phone
+            </Text>
+          </View>
+        </TouchableOpacity>
+        <View
+          style={{
+            flexDirection: 'row',
+            justifyContent: 'center',
+            marginTop: '10%',
+          }}>
+          <Text style={{color: 'black', fontSize: 15}}>
+            Don't have an Account?
+          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              props.navigation.navigate('Signup');
+            }}>
+            <Text style={{fontSize: 15}}>Signup</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <ImageBackground
         source={require('../assets/images/272.png')}
@@ -141,7 +158,7 @@ const styles = StyleSheet.create({
     backgroundColor: '#F38000',
     padding: '3%',
     borderRadius: 10,
-    marginTop:'10%',
+    marginTop: '10%',
   },
   v5: {
     width: width / 3,

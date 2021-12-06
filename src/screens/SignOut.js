@@ -9,9 +9,9 @@ const SignOut = props => {
 
   const user = auth().currentUser;
   const userid = user.uid;
-  console.log(user);
-  console.log(userid);
-  console.log(info);
+  // console.log(user);
+  // console.log(userid);
+  // console.log(info);
   // console.log(info.UserName)
 
   const GetData = () => {
@@ -63,7 +63,7 @@ const SignOut = props => {
       {info !== null ? (
         <View>
           <Text style={{color: 'black'}}>{info.UserName}</Text>
-          <Text style={{color: 'black'}}>{info.Emial}</Text>
+          <Text style={{color: 'black'}}>{info.Email}</Text>
         </View>
       ) : null}
     </View>
