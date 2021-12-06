@@ -68,7 +68,7 @@ const SignUp = (props) => {
         <TouchableOpacity
           // onPress={()=>props.navigation.navigate("Movies")}
           onPress={() => {
-            Signup(email, password);
+            Signup(userName,email, password);
           }}
           style={{alignItems: 'center', marginTop: '-8%', elevation: 8}}>
           <View style={styles.v3}>

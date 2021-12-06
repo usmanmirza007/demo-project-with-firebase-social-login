@@ -2,14 +2,31 @@ import React, {useEffect} from 'react'
 import auth from '@react-native-firebase/auth';
 import { GoogleSignin, statusCodes } from '@react-native-google-signin/google-signin';
 import { Alert } from 'react-native';
+import database from '@react-native-firebase/database';
 
 
 export const Signup =  (userName,email,password) => {
     return auth()
     .createUserWithEmailAndPassword(userName,email,password)
-    .then(() => {
+    .then((userCredential) => {
+      // Signed in 
+      const user = userCredential.user;
+      const userid = user.uid
+
+        database()
+          .ref('signup/info/'+ userid)
+          .set({
+            UserName:userName,
+            Emial: email,
+            Password: password,
+          })
+          .then(() => console.log('Signup Data set.'));
+
       console.log('User account created & signed in!');
+      // ...
     })
+
+      
     .catch(error => {
       if (error.code === 'auth/email-already-in-use') {
         console.log('That email address is already in use!');
@@ -45,6 +62,7 @@ export const Login =  (email,password) => {
 
 
 export const Logout = () => {
+  
     return auth().signOut()    .then(() => console.log('User signed out!'));
     // .signOut()
 
@@ -74,7 +92,6 @@ export const GoogleSignIn = async () => {
 
   // Create a Google credential with the token
   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-  console.log('success', idToken)
 
   // Sign-in the user with the credential
   return auth().signInWithCredential(googleCredential);
@@ -90,17 +107,6 @@ export const GoogleSignIn = async () => {
     }
   }
 }
-
-// async function onGoogleButtonPress() {
-//   // Get the users ID token
-//   const { idToken } = await GoogleSignin.signIn();
-
-//   // Create a Google credential with the token
-//   const googleCredential = auth.GoogleAuthProvider.credential(idToken);
-
-//   // Sign-in the user with the credential
-//   return auth().signInWithCredential(googleCredential);
-// }
 
 
 export const sendOtp = (number)=>{

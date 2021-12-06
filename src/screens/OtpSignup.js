@@ -41,7 +41,7 @@ const OtpSignUp = props => {
         onPress={() => {_sendOtp(number);
         }}
       />
-      {console.log(number)}
+      {/* {console.log(number)} */}
 
       <TextInput
         placeholder="Enter OTP"

@@ -8,6 +8,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import auth from '@react-native-firebase/auth';
 import StackNavigation from "./src/screens/StackNavigation";
 import Stack2 from "./src/screens/Stack2";
+import BottomNav from "./src/navigation/BottomNavigation";
 
 const Stack = createNativeStackNavigator();
 
@@ -33,7 +34,7 @@ const App = ()=>{
     
 
   }, [auth]);
-console.log("user", user);
+// console.log("user", user);
   // if (initializing) return null;
   // console.log(user);
 
@@ -41,7 +42,7 @@ console.log("user", user);
       <Provider store={store}>
         <PersistGate persistor={persistor}>
         <NavigationContainer>
-        {!user ? <StackNavigation /> : <Stack2 />}
+        {!user ? <StackNavigation /> : <BottomNav />}
         </NavigationContainer>
         </PersistGate>
       </Provider>
