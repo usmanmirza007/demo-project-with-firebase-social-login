@@ -6,8 +6,8 @@ import { PersistGate } from "redux-persist/integration/react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import auth from '@react-native-firebase/auth';
-import StackNavigation from "./src/screens/StackNavigation";
-import Stack2 from "./src/screens/Stack2";
+import StackNavigation from './src/navigation/StackNavigation'
+import Stack2 from "./src/navigation/Stack2";
 import BottomNav from "./src/navigation/BottomNavigation";
 
 const Stack = createNativeStackNavigator();

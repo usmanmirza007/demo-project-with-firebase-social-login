@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {View, Text, Button, TouchableOpacity} from 'react-native';
-import {Logout} from './AuthProvider';
+import { Logout } from '../auth/AuthProvider';
 import auth from '@react-native-firebase/auth';
 import database from '@react-native-firebase/database';
 

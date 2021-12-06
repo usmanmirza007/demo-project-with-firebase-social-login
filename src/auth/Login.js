@@ -48,7 +48,6 @@ const LogIn = props => {
         </View>
 
         <TouchableOpacity
-          // onPress={()=>props.navigation.navigate("Movies")}
           onPress={() => {
             Login(email, password);
           }}

@@ -2,13 +2,8 @@ import React from 'react';
 import {View, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-import { Logout } from '../screens/AuthProvider';
-import {
-  Avatar,
-  Title,
-  Caption,
-  Drawer,
-} from 'react-native-paper';
+import {Logout} from '../auth/AuthProvider';
+import {Avatar, Title, Caption, Drawer} from 'react-native-paper';
 
 const DrawerContent = props => {
   return (

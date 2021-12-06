@@ -7,17 +7,11 @@ import {sendOtp, confirmCode} from './AuthProvider';
 // import {Auth} from '../services'
 
 const OtpSignUp = props => {
-  // const [ codeArr, setCodeArr ]= useState([])
   const [number, setNumber] = useState();
   const [code, setCode] = useState();
-  // const code = codeArr.join("")
+
   const [confirm, setConfirm] = useState(null); //if null means no otp message send
 
-  // handleCode = (e, index) => {
-  //     const codeArray = [...code]
-  //     codeArray[index] = e
-  //     setCodeArr(codeArray)
-  // }
 
   const _sendOtp = () => {
     sendOtp(number).then(confirmation => setConfirm(confirmation));
@@ -41,7 +35,7 @@ const OtpSignUp = props => {
         onPress={() => {_sendOtp(number);
         }}
       />
-      {/* {console.log(number)} */}
+
 
       <TextInput
         placeholder="Enter OTP"
@@ -55,33 +49,6 @@ const OtpSignUp = props => {
         title="Confirm Otp"
         onPress={() => confirmCode(confirm, code)}
       />
-
-      {/* <Input
-                placeholder= "Enter Number"
-                value={number}
-                onChangeText={e => setNumber(e)}
-            />
-
-            <Button
-                buttonText= "Send OTP"
-                onPress={() => _sendOtp(number)}
-            />
-
-            <OtpInput 
-                onChangeText={ (e, index) => handleCode(e, index)}
-                value= {codeArr}
-                noOfInput = {6}
-            />
-
-            <Button
-                buttonText= "Verify"
-                onPress={() => Auth.confirmCode(confirm, code)}
-            />
-
-            <TextButton 
-                text="Back to Login"
-                onPress={() => navigation.navigate('Login')}
-            /> */}
     </View>
   );
 };

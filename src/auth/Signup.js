@@ -9,13 +9,14 @@ import {
 } from 'react-native';
 import InputText from '../components/InputText';
 const {height, width} = Dimensions.get('window');
-import {Signup} from './AuthProvider';
+import { Signup } from './AuthProvider';
 
 const SignUp = (props) => {
 
     const [userName, setUserName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState();
+    const [changePass, setChangePass] = useState();
 
 
   return (
@@ -58,15 +59,14 @@ const SignUp = (props) => {
             placeholder="Confirm Password"
             secure={true}
             ico="key"
-            value={password}
-            // changeText={val => {
-            //   setPassword(val);
-            // }}
+            value={changePass}
+            changeText={val => {
+              setChangePass(val);
+            }}
           />
         </View>
 
         <TouchableOpacity
-          // onPress={()=>props.navigation.navigate("Movies")}
           onPress={() => {
             Signup(userName,email, password);
           }}
@@ -75,6 +75,13 @@ const SignUp = (props) => {
             <Text style={{fontSize: 20}}>Signup</Text>
           </View>
         </TouchableOpacity>
+        <View style={{flexDirection:'row',justifyContent:'center',marginTop:'10%'}}>
+          <Text style={{color:'black',fontSize:15}}>Already have an Account?</Text>
+          <TouchableOpacity onPress={() => {props.navigation.navigate("Login")
+          }}>
+            <Text style={{fontSize:15}}>Login</Text>
+          </TouchableOpacity>
+        </View>
       </View>
       <ImageBackground
         source={require('../assets/images/272.png')}
