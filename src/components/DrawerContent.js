@@ -1,26 +1,45 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import {View, StyleSheet} from 'react-native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import {DrawerContentScrollView, DrawerItem} from '@react-navigation/drawer';
-import {Logout} from '../auth/AuthProvider';
+import {Logout,signOut} from '../auth/AuthProvider';
 import {Avatar, Title, Caption, Drawer} from 'react-native-paper';
+import auth from '@react-native-firebase/auth';
+import database from '@react-native-firebase/database';
+
 
 const DrawerContent = props => {
+  const [info, setInfo] = useState(null);
+
+  const user = auth().currentUser;
+  const userid = user.uid;
+
+  useEffect(() => {
+    database()
+      .ref(`/signup/info/${userid}`)
+      .on('value', snapshot => {
+        setInfo(snapshot.val());
+        // console.log(info);
+      });
+  }, []);
+
   return (
     <View style={{flex: 1}}>
       <DrawerContentScrollView {...props}>
         <View style={styles.drawerContent}>
           <View style={styles.userInfoSection}>
+          {info !== null ? (
             <View style={{flexDirection: 'row', marginTop: 15}}>
               <Avatar.Image
-                source={require('../assets/images/272.png')}
-                size={50}
+                source={require('../assets/images/UsamaAli.jpg')}
+                size={70}
               />
               <View style={{marginLeft: 15, flexDirection: 'column'}}>
-                <Title style={styles.title}>John Doe</Title>
-                <Caption style={styles.caption}>@j_doe</Caption>
+                <Title style={styles.title}>{info.UserName}</Title>
+                <Caption style={styles.caption}>{info.Email}</Caption>
               </View>
             </View>
+            ) : null}
           </View>
         </View>
         <Drawer.Section style={styles.drawerSection}>
@@ -69,6 +88,15 @@ const DrawerContent = props => {
           label="Sign Out"
           onPress={() => {
             Logout();
+          }}
+        />
+      </Drawer.Section>
+      <Drawer.Section style={styles.bottomDrawerSection}>
+        <DrawerItem
+          icon={() => <Icon name="exit-to-app" size={20} />}
+          label="Google Sign Out"
+          onPress={() => {
+            signOut();
           }}
         />
       </Drawer.Section>

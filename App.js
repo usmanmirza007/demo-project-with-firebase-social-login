@@ -19,7 +19,7 @@ const App = ()=>{
   // console.log(user);
   const onAuthStateChanged = user => {
     setUser(user);
-    // if (initializing) setInitializing(false);
+    if (initializing) setInitializing(false);
   };
 
   useEffect(() => {
@@ -34,9 +34,8 @@ const App = ()=>{
     
 
   }, [auth]);
-// console.log("user", user);
-  // if (initializing) return null;
-  // console.log(user);
+console.log("user", user);
+  if (initializing) return null;
 
   return(
       <Provider store={store}>

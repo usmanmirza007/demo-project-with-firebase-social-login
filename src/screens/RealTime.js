@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import{View,Text,TextInput,Button} from 'react-native'
 import database from '@react-native-firebase/database';
-import { firebase } from "@react-native-firebase/auth";
+import auth from '@react-native-firebase/auth';
 
 // database()
 //   .ref('/users/')
@@ -11,13 +11,14 @@ import { firebase } from "@react-native-firebase/auth";
 //   })
 //   .then(() => console.log('Data set.'));
 
+
 const RealTime =()=>{
 
     const [text, setText] = useState()
     const [info, setInfo] = useState()
 
     SetData = () =>{
-        firebase.database()
+        database()
         .ref('user/info')
         .push({
             name: text,
