@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import auth from '@react-native-firebase/auth';
 import {
   GoogleSignin,
@@ -6,6 +6,11 @@ import {
 } from '@react-native-google-signin/google-signin';
 import {Alert} from 'react-native';
 import database from '@react-native-firebase/database';
+
+const user = auth().currentUser;
+  // console.log(user)
+
+  // const[use, setUse] = useState(null)
 
 export const Signup = (userName, email, password) => {
   console.log('userName',userName,'Email',email)
@@ -46,6 +51,7 @@ export const Login = (email, password) => {
     .signInWithEmailAndPassword(email, password)
     .then(() => {
       console.log('Signed in!');
+
     })
     .catch(error => {
       if (error.code === 'auth/email-already-in-use') {
@@ -87,6 +93,7 @@ export const Logout = () => {
 export const GoogleSignIn = async () => {
   try {
     const {idToken} = await GoogleSignin.signIn();
+    console.log(idToken)
 
     // Create a Google credential with the token
     const googleCredential = auth.GoogleAuthProvider.credential(idToken);
@@ -122,4 +129,15 @@ export const confirmCode = (state, code) => {
     .catch(error => {
       Alert.alert(error.code, error.message);
     });
+};
+
+export const signOut = async () => {
+  try {
+     const out = await GoogleSignin.signOut();
+
+    console.log('google Signout')
+    // this.setState({ user: null }); // Remember to remove the user from your app's state as well
+  } catch (error) {
+    console.error(error);
+  }
 };
