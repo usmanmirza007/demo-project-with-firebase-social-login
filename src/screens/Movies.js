@@ -14,7 +14,6 @@ import {
 import {useSelector, useDispatch} from 'react-redux';
 import {getMovies} from '../redux/productDetails/actions';
 
-
 const Movies = ({navigation}) => {
   const dispatch = useDispatch();
   const moviesData = useSelector(state => state.movies.movies);

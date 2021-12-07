@@ -7,7 +7,6 @@ import {Avatar, Title, Caption, Drawer} from 'react-native-paper';
 
 const Profile = () => {
   const [info, setInfo] = useState(null);
-
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
@@ -41,7 +40,6 @@ const Profile = () => {
   }
 
   useEffect(()=>{
-      console.log(info)
     setName(info?.UserName)
     setEmail(info?.Email)
     setPassword(info?.Password)

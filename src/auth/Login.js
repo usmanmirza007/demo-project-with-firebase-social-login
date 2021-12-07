@@ -77,9 +77,9 @@ const LogIn = props => {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={() => {
-              props.navigation.navigate('Signup');
-            }}
+            // onPress={() => {
+            //   props.navigation.navigate('Signup');
+            // }}
             style={{alignItems: 'center', elevation: 8}}>
             <View style={styles.v5}>
               <Text style={{fontSize: 20, color: 'white'}}>Facebook</Text>
